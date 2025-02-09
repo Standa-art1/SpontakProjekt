@@ -8,11 +8,11 @@ public class UzivatelskeRozhrani {
         while (true) {
             int volba;
             while (true) {
-            System.out.println("Vyberte si akce:");
-            System.out.println("1 - Přidat noveho pojisteneho");
-            System.out.println("2 - Vypsat všechne pojistene");
-            System.out.println("3 - Vyhledat pojisteneho");
-            System.out.println("4 - Konec");
+                System.out.println("Vyberte si akce:");
+                System.out.println("1 - Přidat noveho pojisteneho");
+                System.out.println("2 - Vypsat všechne pojistene");
+                System.out.println("3 - Vyhledat pojisteneho");
+                System.out.println("4 - Konec");
                 String input = sc.nextLine().trim();
                 if (input.matches("[1-4]")) {
                     volba = Integer.parseInt(input);
@@ -31,9 +31,21 @@ public class UzivatelskeRozhrani {
         }
     }
     private void pridejPojistence() {
-        System.out.println("Jméno:"); String jmeno = sc.nextLine().trim();
-        System.out.println("Příjmení:"); String prijmeni = sc.nextLine().trim();
-        System.out.println("Věk:");
+        String jmeno;
+        while (true) {
+            System.out.println("Zadej jméno pojistneho:");
+            jmeno = sc.nextLine().trim();
+            if (jmeno.matches("[\\p{L}]{3,50}")) break;
+            System.out.println("Jméno musí obsahovat pouze písmena a mít 3-50 znaků.");
+        }
+        String prijmeni;
+        while (true) {
+            System.out.println("Zadejte příjmení pojistneho:");
+            prijmeni = sc.nextLine().trim();
+            if (prijmeni.matches("[\\p{L}]{3,50}")) break;
+            System.out.println("Příjmení musí obsahovat pouze písmena a mít 3-50 znaků.");
+        }
+        System.out.println("Zadejte věk:");
         int vek;
         while (true) {
             try {
@@ -45,7 +57,7 @@ public class UzivatelskeRozhrani {
                 System.out.println("Neplatný vstup. Zadejte věk mezi 0-150.");
             }
         }
-        System.out.println("Telefon:");
+        System.out.println("Zadejte telefonni čislo:");
         String telefon;
         while (true) {
             telefon = sc.nextLine().trim();
