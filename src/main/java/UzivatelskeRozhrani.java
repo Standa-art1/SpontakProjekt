@@ -22,7 +22,7 @@ public class UzivatelskeRozhrani {
             }
             switch (volba) {
                 case 1 -> pridejPojistence();
-                case 2 -> evidence.vypisPojistence();
+                case 2 -> vypisPojistence();
                 case 3 -> vyhledejPojistence();
                 case 4 -> {
                     return;
@@ -51,10 +51,10 @@ public class UzivatelskeRozhrani {
             try {
                 String vekInput = sc.nextLine().trim();
                 vek = Integer.parseInt(vekInput);
-                if (vek < 0 || vek > 150) throw new NumberFormatException();
+                if (vek < 0 || vek > 120) throw new NumberFormatException();
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Neplatný vstup. Zadejte věk mezi 0-150.");
+                System.out.println("Neplatný vstup. Zadejte věk mezi 0-120.");
             }
         }
         System.out.println("Zadejte telefonni čislo:");
@@ -78,9 +78,14 @@ public class UzivatelskeRozhrani {
         System.out.println("Data byla uložena, pokračujte libovolnou klávesou ...");
         sc.nextLine();
     }
+    private void vypisPojistence () {
+        evidence.vratPojistence().forEach(System.out::println);
+    }
     private void vyhledejPojistence() {
-        System.out.print("Jméno: "); String jmeno = sc.nextLine();
-        System.out.print("Příjmení: "); String prijmeni = sc.nextLine();
+        System.out.print("Jméno: ");
+        String jmeno = sc.nextLine();
+        System.out.print("Příjmení: ");
+        String prijmeni = sc.nextLine();
         Pojistenec pojistenec = evidence.vyhledejPojistence(jmeno, prijmeni);
         System.out.println(pojistenec != null ? pojistenec : "Pojištěnec nenalezen.");
         System.out.println("Pokračujte libovolnou klávesou ...");
